@@ -25,7 +25,7 @@ public class App {
 
         System.out.println("Bem-vindo, " + cliente.getNome());
 
-        // Listar livros disponíveis
+        //livros disponíveis
         List<Livro> livrosDisponiveis = vendaService.listarLivros();
         System.out.println("Livros disponíveis para compra:");
         for (int i = 0; i < livrosDisponiveis.size(); i++) {
@@ -53,13 +53,12 @@ public class App {
             return;
         }
 
-        // Selecionar um funcionário (mockado para simplificação)
+        // Selec funcionario
         Funcionario funcionario = repository.getFuncionarios().get(0); // Carlos Souza
 
         // Realizar a venda
         vendaService.realizarVenda(cliente, funcionario, livrosComprados);
 
-        // Consultar as vendas realizadas
         List<Venda> vendas = vendaService.consultarVendas();
         System.out.println("Vendas realizadas:");
         vendas.forEach(venda -> {
