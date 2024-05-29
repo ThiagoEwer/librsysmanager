@@ -58,6 +58,18 @@ public class MockDados {
         return clientes;
     }
 
+    public void addClientes(Cliente cliente) {
+        this.clientes.add(cliente);
+    }
+
+    public void updateCliente(int id, Cliente cliente){
+        this.clientes.set(id, cliente);
+    }
+
+    public void deletarCliente(int id){
+        this.clientes.remove(id);
+    }
+
     public List<Funcionario> getFuncionarios() {
         return funcionarios;
     }
