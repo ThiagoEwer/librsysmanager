@@ -26,35 +26,39 @@ public class MockDados {
         vendas = new ArrayList<>();
         promocoes = new ArrayList<>();
 
-        // Como não vamos usar o SQL, aqui abaixo seguem os dados mockados dos objetos
+        // Mock GERAL!
         livros = new ArrayList<>(Arrays.asList(
                 new Livro(1, "O Senhor dos Anéis", "J.R.R. Tolkien", "978-0-261-10320-9", 89.90, 10, new Date()),
                 new Livro(2, "O Hobbit", "J.R.R. Tolkien", "978-0-261-10221-9", 49.90, 5, new Date()),
                 new Livro(3, "1984", "George Orwell", "978-0-452-28423-4", 39.90, 8, new Date()),
                 new Livro(4, "Dom Quixote", "Miguel de Cervantes", "978-0-14-243723-0", 59.90, 7, new Date()),
-                new Livro(5, "Guerra e Paz", "Liev Tolstói", "978-0-14-044793-4", 99.90, 4, new Date())));
+                new Livro(5, "Guerra e Paz", "Liev Tolstói", "978-0-14-044793-4", 99.90, 4, new Date())
+        ));
 
         Endereco enderecoCliente1 = new Endereco("Avenida Paulista", "1000", "São Paulo", "SP", "01310-100");
         Endereco enderecoCliente2 = new Endereco("Rua XV de Novembro", "500", "Curitiba", "PR", "80020-310");
         clientes = new ArrayList<>(Arrays.asList(
-                new Cliente("João da Silva", "123.456.789-00", "joao.silva@gmail.com", "11 99999-8888",
-                        enderecoCliente1),
-                new Cliente("Maria Oliveira", "987.654.321-00", "maria.oliveira@gmail.com", "41 98888-7777",
-                        enderecoCliente2)));
+                new Cliente("João da Silva", "123.456.789-00", "joao.silva@gmail.com", "11 99999-8888", enderecoCliente1),
+                new Cliente("Maria Oliveira", "987.654.321-00", "maria.oliveira@gmail.com", "41 98888-7777", enderecoCliente2)
+        ));
 
         Endereco enderecoFuncionario1 = new Endereco("Rua das Flores", "150", "Rio de Janeiro", "RJ", "20010-020");
         Endereco enderecoFuncionario2 = new Endereco("Avenida Brasil", "200", "Belo Horizonte", "MG", "30140-001");
         funcionarios = new ArrayList<>(Arrays.asList(
-                new Funcionario("Carlos Souza", "111.222.333-44", "carlos.souza@empresa.com", "21 97777-6666",
-                        enderecoFuncionario1, "Gerente", 5000.00, new Date()),
-                new Funcionario("Ana Lima", "555.666.777-88", "ana.lima@empresa.com", "31 96666-5555",
-                        enderecoFuncionario2, "Vendedora", 3000.00, new Date())));
+                new Funcionario("Carlos Souza", "111.222.333-44", "carlos.souza@empresa.com", "21 97777-6666", enderecoFuncionario1, "Gerente", 5000.00, new Date()),
+                new Funcionario("Ana Lima", "555.666.777-88", "ana.lima@empresa.com", "31 96666-5555", enderecoFuncionario2, "Vendedora", 3000.00, new Date())
+        ));
 
-        vendas = new ArrayList<>();
+        vendas = new ArrayList<>(Arrays.asList(
+                new Venda(new Date(System.currentTimeMillis() - 86400000 * 3), 139.80, Arrays.asList(livros.get(0), livros.get(1)), clientes.get(0), funcionarios.get(0)),
+                new Venda(new Date(System.currentTimeMillis() - 86400000 * 2), 99.80, Arrays.asList(livros.get(2), livros.get(3)), clientes.get(1), funcionarios.get(1)),
+                new Venda(new Date(System.currentTimeMillis() - 86400000), 99.90, Arrays.asList(livros.get(4)), clientes.get(0), funcionarios.get(1))
+        ));
 
         promocoes = new ArrayList<>(Arrays.asList(
                 new Promocao("Desconto de Verão", 10.0, new Date(), new Date()),
-                new Promocao("Promoção de Inverno", 15.0, new Date(), new Date())));
+                new Promocao("Promoção de Inverno", 15.0, new Date(), new Date())
+        ));
     }
 
     public List<Livro> getLivros() {
@@ -101,5 +105,12 @@ public class MockDados {
     // Add um livro ao repositório
     public void addLivro(Livro livro) {
         livros.add(livro);
+    }
+
+    // Método para imprimir detalhes das vendas
+    public void imprimirDetalhesDasVendas() {
+        for (Venda venda : vendas) {
+            System.out.println(venda.getVendaDetalhes());
+        }
     }
 }

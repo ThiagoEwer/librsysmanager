@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.List;
 
 public class Venda {
+    private static int idCounter = 0;
+    private int id;
     private Date data;
     private double valorTotal;
     private List<Livro> livrosVendidos;
@@ -11,11 +13,16 @@ public class Venda {
     private Funcionario funcionario;
 
     public Venda(Date data, double valorTotal, List<Livro> livrosVendidos, Cliente cliente, Funcionario funcionario) {
+        this.id = ++idCounter;
         this.data = data;
         this.valorTotal = valorTotal;
         this.livrosVendidos = livrosVendidos;
         this.cliente = cliente;
         this.funcionario = funcionario;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public Date getData() {
@@ -58,4 +65,19 @@ public class Venda {
         this.funcionario = funcionario;
     }
 
+    public String getVendaDetalhes() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Venda ID: ").append(id).append("\n")
+          .append("Data: ").append(data).append("\n")
+          .append("Valor Total: ").append(valorTotal).append("\n")
+          .append("Cliente: ").append(cliente.getNome()).append("\n")
+          .append("Funcionário: ").append(funcionario.getNome()).append("\n")
+          .append("Livros Vendidos:\n");
+
+        for (Livro livro : livrosVendidos) {
+            sb.append("  - ").append(livro.getTitulo()).append(" (").append(livro.getAutor()).append(")\n");
+        }
+
+        return sb.toString();
+    }
 }
