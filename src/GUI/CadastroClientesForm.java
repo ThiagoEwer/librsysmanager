@@ -1,6 +1,6 @@
 package GUI;
 
-import javax.swing.JFrame;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 import mock.MockDados;
@@ -9,7 +9,7 @@ import model.Endereco;
 
 import java.awt.event.ActionEvent;
 
-public class CadastroClientesForm extends JFrame{
+public class CadastroClientesForm extends JDialog{
 
     private javax.swing.JButton btnSalvar;
     private javax.swing.JLabel lblCpf;
@@ -33,12 +33,12 @@ public class CadastroClientesForm extends JFrame{
     private javax.swing.JTextField txtTelefone;
 
     private MockDados repository;
-    private ViewClientesForm view;
+    private ViewClientesPanel view;
     private Cliente cliente;
     private int id;
 
     //Construtor - CADASTRO
-    public CadastroClientesForm(MockDados repository, ViewClientesForm view){
+    public CadastroClientesForm(MockDados repository, ViewClientesPanel view){
         this.repository = repository;
         this.view = view;
         this.inicializar();
@@ -46,7 +46,7 @@ public class CadastroClientesForm extends JFrame{
     }
 
     //Construtor - EDIÇÃO
-    public CadastroClientesForm(MockDados repository, ViewClientesForm view, Cliente cliente, int id){
+    public CadastroClientesForm(MockDados repository, ViewClientesPanel view, Cliente cliente, int id){
         this.repository = repository;
         this.view = view;
         this.cliente = cliente;
@@ -79,6 +79,7 @@ public class CadastroClientesForm extends JFrame{
         txtEndCep = new javax.swing.JTextField();
         lblEndCep = new javax.swing.JLabel();
 
+        setModal(true);
         setTitle("Cadastro de Clientes");
         btnSalvar.setText("Cadastrar");
         lblTitulo.setText("Cadastro de Cliente");
@@ -329,11 +330,12 @@ public class CadastroClientesForm extends JFrame{
                 repository.updateCliente(id, cliente);
                 JOptionPane.showMessageDialog(null, "Cliente atualizado com sucesso!");
             }
+
+            //RECARREGAR O PAINEL VIEWCLIENTES
+            view.removeAll();
+            view.initComponents();
     
-            view.dispose();
-    
-            new ViewClientesForm(repository).setVisible(true);
-    
+            //FECHAR FORM ATUAL
             this.dispose();
         }
         
