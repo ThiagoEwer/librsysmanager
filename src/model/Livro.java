@@ -1,6 +1,7 @@
 package model;
 
 public class Livro {
+    private int codigo;
     private String titulo;
     private String autor;
     private String ISBN;
@@ -8,7 +9,8 @@ public class Livro {
     private int quantidadeEmEstoque;
 
 //construtor
-    public Livro(String titulo, String autor, String ISBN, double preco, int quantidadeEmEstoque) {
+    public Livro(int codigo, String titulo, String autor, String ISBN, double preco, int quantidadeEmEstoque) {
+        this.codigo = codigo;
         this.titulo = titulo;
         this.autor = autor;
         this.ISBN = ISBN;
@@ -16,6 +18,15 @@ public class Livro {
         this.quantidadeEmEstoque = quantidadeEmEstoque;
     }
 //gets&setters
+
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo){
+        this.codigo = codigo;
+    }
+
     public String getTitulo() {
         return titulo;
     }

@@ -21,11 +21,11 @@ public class MockDados {
     private void initializeData() {
         // Como não vamos usar o SQL, aqui abaixo seguem os dados mockados dos objetos que vamos usar
         livros = new ArrayList<>(Arrays.asList(
-            new Livro("O Senhor dos Anéis", "J.R.R. Tolkien", "978-0-261-10320-9", 89.90, 10),
-            new Livro("O Hobbit", "J.R.R. Tolkien", "978-0-261-10221-9", 49.90, 5),
-            new Livro("1984", "George Orwell", "978-0-452-28423-4", 39.90, 8),
-            new Livro("Dom Quixote", "Miguel de Cervantes", "978-0-14-243723-0", 59.90, 7),
-            new Livro("Guerra e Paz", "Liev Tolstói", "978-0-14-044793-4", 99.90, 4)
+            new Livro(1,"O Senhor dos Anéis", "J.R.R. Tolkien", "978-0-261-10320-9", 89.90, 10),
+            new Livro(2,"O Hobbit", "J.R.R. Tolkien", "978-0-261-10221-9", 49.90, 5),
+            new Livro(3, "1984", "George Orwell", "978-0-452-28423-4", 39.90, 8),
+            new Livro(4, "Dom Quixote", "Miguel de Cervantes", "978-0-14-243723-0", 59.90, 7),
+            new Livro(5, "Guerra e Paz", "Liev Tolstói", "978-0-14-044793-4", 99.90, 4)
         ));
 
         Endereco enderecoCliente1 = new Endereco("Avenida Paulista", "1000", "São Paulo", "SP", "01310-100");

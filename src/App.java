@@ -8,17 +8,14 @@ import java.util.List;
 import java.util.Scanner;
 
 import GUI.CadastroClientesForm;
-import GUI.Principal;
-import GUI.ViewClientesForm;
+import GUI.MenuPrincipal;
 
 public class App {
     public static void main(String[] args) {
         MockDados repository = new MockDados();
 
         //Abre o JFrame do MENU PRINCIPAL
-        new Principal(repository).setVisible(true);
-
-        
+        new MenuPrincipal(repository).setVisible(true);
 
         
         // VendaService vendaService = new VendaService(repository);
