@@ -11,13 +11,14 @@ public class Livro {
     private int quantidadeEmEstoque;
     private Date dataEntrada;
 
-    public Livro(int codigo, String titulo, String autor, String ISBN, double preco, int quantidadeEmEstoque) {
+    public Livro(int codigo, String titulo, String autor, String ISBN, double preco, int quantidadeEmEstoque, Date dataEntrada) {
         this.codigo = codigo;
         this.titulo = titulo;
         this.autor = autor;
         this.ISBN = ISBN;
         this.preco = preco;
         this.quantidadeEmEstoque = quantidadeEmEstoque;
+        this.dataEntrada = dataEntrada;
     }
 
     public int getCodigo() {
@@ -44,11 +45,11 @@ public class Livro {
         return quantidadeEmEstoque;
     }
 
-    public void setDataEntrada(Date dataEntrada) {
-        this.dataEntrada = dataEntrada;
-    }
-
     public Date getDataEntrada() {
         return dataEntrada;
+    }
+
+    public void setDataEntrada(Date dataEntrada) {
+        this.dataEntrada = dataEntrada;
     }
 }

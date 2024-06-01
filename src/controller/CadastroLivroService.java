@@ -2,9 +2,7 @@ package controller;
 
 import mock.MockDados;
 import model.Livro;
-import model.EstoqueEntradas;
 
-import java.util.Date;
 import java.util.Scanner;
 
 public class CadastroLivroService {
@@ -31,20 +29,14 @@ public class CadastroLivroService {
             System.out.print("Quantidade em Estoque: ");
             int quantidadeEmEstoque = tec.nextInt();
 
-            // Gerar um ID único para o livro
+            // Gerar O ID o livro
             int id = repository.gerarIdUnicoParaLivro();
 
-            // Criar um novo livro com as informações fornecidas
-            Livro novoLivro = new Livro(id, titulo, autor, ISBN, preco, quantidadeEmEstoque);
-
-            // Adicionar a data de entrada do livro
-            novoLivro.setDataEntrada(new Date());
+            // Cria o novo livro com os dados fornecidos
+            Livro novoLivro = new Livro(id, titulo, autor, ISBN, preco, quantidadeEmEstoque, new java.util.Date());
 
             // Adicionar o livro ao repositório
             repository.addLivro(novoLivro);
-
-            // Adicionar entrada de estoque
-            repository.addEntradaEstoque(new EstoqueEntradas(id, new Date(), quantidadeEmEstoque));
 
             System.out.println("Livro cadastrado com sucesso!");
 
@@ -55,13 +47,12 @@ public class CadastroLivroService {
                         ", Autor: " + livro.getAutor() + ", Data de Entrada: " + livro.getDataEntrada());
             }
 
-            // Verificar se o usuário deseja cadastrar outro livro
+            //cadastrar outro livro
             System.out.print("Deseja cadastrar outro livro? (S/N): ");
             String resposta = tec.next();
             if (!resposta.equalsIgnoreCase("S")) {
                 break;
             }
-            // Limpar o buffer do tec
             tec.nextLine();
         }
     }
