@@ -13,12 +13,31 @@ public class MockDados {
     private List<Funcionario> funcionarios;
     private List<Venda> vendas;
     private List<Promocao> promocoes;
+    private List<EstoqueEntradas> entradasEstoque;
+
+    public List<EstoqueEntradas> getEntradasEstoque() {
+        return entradasEstoque;
+    }
+
+    public void setEntradasEstoque(List<EstoqueEntradas> entradasEstoque) {
+        this.entradasEstoque = entradasEstoque;
+    }
 
     public MockDados() {
         initializeData();
     }
 
     private void initializeData() {
+
+         // Inicializar listas
+         livros = new ArrayList<>();
+         clientes = new ArrayList<>();
+         funcionarios = new ArrayList<>();
+         vendas = new ArrayList<>();
+         promocoes = new ArrayList<>();
+         entradasEstoque = new ArrayList<>();
+
+
         // Como não vamos usar o SQL, aqui abaixo seguem os dados mockados dos objetos que vamos usar
         livros = new ArrayList<>(Arrays.asList(
             new Livro(1,"O Senhor dos Anéis", "J.R.R. Tolkien", "978-0-261-10320-9", 89.90, 10),
@@ -84,5 +103,20 @@ public class MockDados {
 
     public void addVenda(Venda venda) {
         vendas.add(venda);
+    }
+
+     // Método para adicionar uma entrada de estoque
+     public void addEntradaEstoque(EstoqueEntradas entrada) {
+        entradasEstoque.add(entrada);
+    }
+
+    //método para gerar IDs únicos para os livros
+    public int gerarIdUnicoParaLivro() {
+        return livros.size() + 1;
+    }
+
+    // Add um livro ao repositório
+    public void addLivro(Livro livro) {
+        livros.add(livro);
     }
 }
