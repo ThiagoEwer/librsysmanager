@@ -35,16 +35,4 @@ public class Livro {
     public double getPreco() {
         return preco;
     }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null || getClass() != obj.getClass()) {
-            return false;
-        }
-        Livro outroLivro = (Livro) obj;
-        return codigo == outroLivro.codigo;
-    }
 }

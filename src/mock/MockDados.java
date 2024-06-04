@@ -60,11 +60,19 @@ public class MockDados {
                 new Funcionario("Ana Lima", "555.666.777-88", "ana.lima@empresa.com", "31 96666-5555", enderecoFuncionario2, "Vendedora", 3000.00, new Date())
         ));
 
+
+
         vendas = new ArrayList<>(Arrays.asList(
-                new Venda(new Date(System.currentTimeMillis() - 86400000 * 3), 139.80, Arrays.asList(livros.get(0), livros.get(1)), clientes.get(0), funcionarios.get(0)),
-                new Venda(new Date(System.currentTimeMillis() - 86400000 * 2), 99.80, Arrays.asList(livros.get(2), livros.get(3)), clientes.get(1), funcionarios.get(1)),
-                new Venda(new Date(System.currentTimeMillis() - 86400000), 99.90, Arrays.asList(livros.get(4)), clientes.get(0), funcionarios.get(1))
+                new Venda(new Date(System.currentTimeMillis() - 86400000 * 3), 139.80, Arrays.asList(getLivroPorCodigo(1), getLivroPorCodigo(2)), clientes.get(0), funcionarios.get(0)),
+                new Venda(new Date(System.currentTimeMillis() - 86400000 * 2), 99.80, Arrays.asList(getLivroPorCodigo(3), getLivroPorCodigo(4)), clientes.get(1), funcionarios.get(1)),
+                new Venda(new Date(System.currentTimeMillis() - 86400000), 99.90, Arrays.asList(getLivroPorCodigo(5)), clientes.get(0), funcionarios.get(1))
         ));
+
+        estoques.adicionarSaida(1, new Date(System.currentTimeMillis() - 86400000 * 3), 1);
+        estoques.adicionarSaida(2, new Date(System.currentTimeMillis() - 86400000 * 3), 1);
+        estoques.adicionarSaida(3, new Date(System.currentTimeMillis() - 86400000 * 2), 1);
+        estoques.adicionarSaida(4, new Date(System.currentTimeMillis() - 86400000 * 2), 1);
+        estoques.adicionarSaida(5, new Date(System.currentTimeMillis() - 86400000), 1);
 
         promocoes = new ArrayList<>(Arrays.asList(
                 new Promocao("Desconto de Verão", 10.0, new Date(), new Date()),
@@ -89,6 +97,11 @@ public class MockDados {
         return clientes;
     }
 
+    public Cliente getCliente(int id){
+        Cliente cliente = clientes.get(id);
+        return cliente;
+    }
+
     public void addClientes(Cliente cliente) {
         this.clientes.add(cliente);
     }
@@ -103,6 +116,11 @@ public class MockDados {
 
     public List<Funcionario> getFuncionarios() {
         return funcionarios;
+    }
+
+    public Funcionario getFuncionario(int id){
+        Funcionario funcionario = funcionarios.get(id);
+        return funcionario;
     }
 
     public List<Venda> getVendas() {

@@ -34,7 +34,11 @@ public class Venda {
     }
 
     public double getValorTotal() {
-        return valorTotal;
+        double vt = 0;
+        for (Livro livro : livrosVendidos) {
+            vt += livro.getPreco();
+        }
+        return vt;
     }
 
     public void setValorTotal(double valorTotal) {
