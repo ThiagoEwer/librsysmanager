@@ -1,24 +1,19 @@
 package model;
 
-import java.util.Date;
-
 public class Livro {
     private int codigo;
     private String titulo;
     private String autor;
     private String ISBN;
     private double preco;
-    private int quantidadeEmEstoque;
-    private Date dataEntrada;
 
-    public Livro(int codigo, String titulo, String autor, String ISBN, double preco, int quantidadeEmEstoque, Date dataEntrada) {
+    //Construtor dados Mocados
+    public Livro(int codigo, String titulo, String autor, String ISBN, double preco) {
         this.codigo = codigo;
         this.titulo = titulo;
         this.autor = autor;
         this.ISBN = ISBN;
         this.preco = preco;
-        this.quantidadeEmEstoque = quantidadeEmEstoque;
-        this.dataEntrada = dataEntrada;
     }
 
     public int getCodigo() {
@@ -41,15 +36,15 @@ public class Livro {
         return preco;
     }
 
-    public int getQuantidadeEmEstoque() {
-        return quantidadeEmEstoque;
-    }
-
-    public Date getDataEntrada() {
-        return dataEntrada;
-    }
-
-    public void setDataEntrada(Date dataEntrada) {
-        this.dataEntrada = dataEntrada;
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Livro outroLivro = (Livro) obj;
+        return codigo == outroLivro.codigo;
     }
 }

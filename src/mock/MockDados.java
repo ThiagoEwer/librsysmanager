@@ -13,6 +13,8 @@ public class MockDados {
     private List<Funcionario> funcionarios;
     private List<Venda> vendas;
     private List<Promocao> promocoes;
+    private List<MovimentoEstoque> movimentos;
+    private Estoque estoques;
 
     public MockDados() {
         initializeData();
@@ -27,12 +29,21 @@ public class MockDados {
         promocoes = new ArrayList<>();
 
         // Mock GERAL!
+        movimentos = new ArrayList<>(Arrays.asList(
+            new MovimentoEstoque(1, new Date(124, 4, 31), 10, TipoMovimento.ENTRADA),
+            new MovimentoEstoque(2, new Date(124, 3, 15), 5, TipoMovimento.ENTRADA),
+            new MovimentoEstoque(3, new Date(124, 5, 22), 8, TipoMovimento.ENTRADA),
+            new MovimentoEstoque(4, new Date(124, 5, 10), 7, TipoMovimento.ENTRADA),
+            new MovimentoEstoque(5, new Date(124, 5, 26), 4, TipoMovimento.ENTRADA)
+        ));
+        estoques = new Estoque(movimentos);
+
         livros = new ArrayList<>(Arrays.asList(
-                new Livro(1, "O Senhor dos Anéis", "J.R.R. Tolkien", "978-0-261-10320-9", 89.90, 10, new Date()),
-                new Livro(2, "O Hobbit", "J.R.R. Tolkien", "978-0-261-10221-9", 49.90, 5, new Date()),
-                new Livro(3, "1984", "George Orwell", "978-0-452-28423-4", 39.90, 8, new Date()),
-                new Livro(4, "Dom Quixote", "Miguel de Cervantes", "978-0-14-243723-0", 59.90, 7, new Date()),
-                new Livro(5, "Guerra e Paz", "Liev Tolstói", "978-0-14-044793-4", 99.90, 4, new Date())
+                new Livro(1, "O Senhor dos Anéis", "J.R.R. Tolkien", "978-0-261-10320-9", 89.90),
+                new Livro(2, "O Hobbit", "J.R.R. Tolkien", "978-0-261-10221-9", 49.90),
+                new Livro(3, "1984", "George Orwell", "978-0-452-28423-4", 39.90),
+                new Livro(4, "Dom Quixote", "Miguel de Cervantes", "978-0-14-243723-0", 59.90),
+                new Livro(5, "Guerra e Paz", "Liev Tolstói", "978-0-14-044793-4", 99.90)
         ));
 
         Endereco enderecoCliente1 = new Endereco("Avenida Paulista", "1000", "São Paulo", "SP", "01310-100");
@@ -63,6 +74,15 @@ public class MockDados {
 
     public List<Livro> getLivros() {
         return livros;
+    }
+
+    public Livro getLivroPorCodigo(int codigo){
+        for (Livro livro : livros) {
+            if(livro.getCodigo() == codigo){
+                return livro;
+            }
+        }
+        return null;
     }
 
     public List<Cliente> getClientes() {
@@ -97,6 +117,30 @@ public class MockDados {
         vendas.add(venda);
     }
 
+    public Estoque getEstoques() {
+        return estoques;
+    }
+
+    public List<MovimentoEstoque> getMovimentacoesPorCodigo(int codigo){
+        return estoques.getMovimentacoesEstoquePorCodigo(codigo);
+    }
+
+    public int getEstoques(int codigo){
+        return estoques.getEstoquePorCodigo(codigo);
+    }
+
+    public Date getDataEntradaEstoques(int codigo){
+        return estoques.getDataEntradaEstoquePorCodigo(codigo);
+    }
+    
+    public void entradaEstoque(int codigoLivro, Date dataEntrada, int quantidade) {
+        estoques.adicionarEntrada(codigoLivro, dataEntrada, quantidade);
+    }
+
+    public void saidaEstoque(int codigoLivro, Date dataSaida, int quantidade){
+        estoques.adicionarSaida(codigoLivro, dataSaida, quantidade);
+    }
+
     // método para gerar IDs únicos para os livros
     public int gerarIdUnicoParaLivro() {
         return livros.size() + 1;
@@ -105,6 +149,14 @@ public class MockDados {
     // Add um livro ao repositório
     public void addLivro(Livro livro) {
         livros.add(livro);
+    }
+
+    public void updateLivro(int id, Livro livro) {
+        this.livros.set(id, livro);
+    }
+
+    public void deletarLivro(int id) {
+        this.livros.remove(id);
     }
 
     // Método para imprimir detalhes das vendas

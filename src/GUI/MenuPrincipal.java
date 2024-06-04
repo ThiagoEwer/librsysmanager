@@ -10,6 +10,8 @@ public class MenuPrincipal extends JFrame {
     private javax.swing.JButton btnClose;
     private javax.swing.JMenu mnClientes;
     private javax.swing.JMenuItem mnClientesItVerClientes;
+    private javax.swing.JMenu mnLivros;
+    private javax.swing.JMenuItem mnLivrosItVerLivros;
     private javax.swing.JTabbedPane tblPanel;
 
     private MockDados repository;
@@ -27,6 +29,8 @@ public class MenuPrincipal extends JFrame {
         barMenu = new javax.swing.JMenuBar();
         mnClientes = new javax.swing.JMenu();
         mnClientesItVerClientes = new javax.swing.JMenuItem();
+        mnLivros = new javax.swing.JMenu();
+        mnLivrosItVerLivros = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,7 +67,18 @@ public class MenuPrincipal extends JFrame {
         });
         mnClientes.add(mnClientesItVerClientes);
 
+        mnLivros.setText("Livros");
+
+        mnLivrosItVerLivros.setText("Listar Livros");
+        mnLivrosItVerLivros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnLivrosItVerLivrosActionPerformed(evt);
+            }
+        });
+        mnLivros.add(mnLivrosItVerLivros);
+
         barMenu.add(mnClientes);
+        barMenu.add(mnLivros);
 
         setJMenuBar(barMenu);
 
@@ -98,7 +113,15 @@ public class MenuPrincipal extends JFrame {
         tblPanel.addTab("Clientes", new ViewClientesPanel(repository));
         String txt = tblPanel.getTitleAt(tblPanel.getSelectedIndex());
         btnClose.setText("Fechar Guia: " + txt);
-    } 
+    }
+
+    private void mnLivrosItVerLivrosActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        tblPanel.addTab("Livros", new ViewLivrosPanel(repository));
+        String txt = tblPanel.getTitleAt(tblPanel.getSelectedIndex());
+        btnClose.setText("Fechar Guia: " + txt);
+    }
+
+    
 
     private void mostrarExconderBtnClose(){
         if(tblPanel.getComponentCount() > 0){

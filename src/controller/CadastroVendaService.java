@@ -53,10 +53,10 @@ public class CadastroVendaService {
             List<Livro> livrosVendidos = new ArrayList<>();
             while (true) {
                 System.out.println("Livros disponíveis:");
-                for (int i = 0; i < repository.getLivros().size(); i++) {
-                    Livro livro = repository.getLivros().get(i);
-                    System.out.println(i + " - " + livro.getTitulo() + " (Preço: " + livro.getPreco() + ") - Estoque: " + livro.getQuantidadeEmEstoque());
-                }
+                // for (int i = 0; i < repository.getLivros().size(); i++) {
+                //     Livro livro = repository.getLivros().get(i);
+                //     System.out.println(i + " - " + livro.getTitulo() + " (Preço: " + livro.getPreco() + ") - Estoque: " + livro.getQuantidadeEmEstoque());
+                // }
                 System.out.print("Selecione o livro (pelo número) ou -1 para finalizar: ");
                 int livroIndex = tec.nextInt();
                 tec.nextLine();
@@ -67,15 +67,15 @@ public class CadastroVendaService {
                 System.out.print("Quantidade desejada: ");
                 int quantidadeDesejada = tec.nextInt();
                 tec.nextLine();
-                if (quantidadeDesejada <= livroSelecionado.getQuantidadeEmEstoque()) {
-                    // Se a quantidade desejada estiver disponível em estoque, adicionamos à lista de livros vendidos
-                    for (int i = 0; i < quantidadeDesejada; i++) {
-                        livrosVendidos.add(livroSelecionado);
-                    }
-                } else {
-                    // Caso contrário, exibimos uma mensagem informando que não há estoque suficiente
-                    System.out.println("Não há estoque suficiente para o livro selecionado. Quantidade disponível em estoque: " + livroSelecionado.getQuantidadeEmEstoque());
-                }
+                // if (quantidadeDesejada <= livroSelecionado.getQuantidadeEmEstoque()) {
+                //     // Se a quantidade desejada estiver disponível em estoque, adicionamos à lista de livros vendidos
+                //     for (int i = 0; i < quantidadeDesejada; i++) {
+                //         livrosVendidos.add(livroSelecionado);
+                //     }
+                // } else {
+                //     // Caso contrário, exibimos uma mensagem informando que não há estoque suficiente
+                //     System.out.println("Não há estoque suficiente para o livro selecionado. Quantidade disponível em estoque: " + livroSelecionado.getQuantidadeEmEstoque());
+                // }
             }
 
             // Adicionar Venda

@@ -149,7 +149,6 @@ public class ViewClientesPanel extends JPanel {
             int id = tblClientes.getSelectedRow();
             Cliente cliente = repository.getClientes().get(tblClientes.getSelectedRow());
 
-            //new CadastroClientesForm(repository, this, cliente, id).setVisible(true);
             new CadastroClientesForm(repository, this, cliente, id).setVisible(true);
         }                                         
     }
