@@ -7,8 +7,8 @@ import java.util.List;
 public class Estoque {
     private List<MovimentoEstoque> movimentos;
 
-    public Estoque() {
-        this.movimentos = new ArrayList<>();
+    public Estoque(List<MovimentoEstoque> movimentos) {
+        this.movimentos = movimentos;
     }
 
     public void adicionarEntrada(int codigoLivro, Date dataEntrada, int quantidade) {
@@ -17,6 +17,18 @@ public class Estoque {
 
     public void adicionarSaida(int codigoLivro, Date dataSaida, int quantidade) {
         movimentos.add(new MovimentoEstoque(codigoLivro, dataSaida, quantidade, TipoMovimento.SAIDA));
+    }
+
+    public List<MovimentoEstoque> getMovimentacoesEstoquePorCodigo(int codigoLivro){
+        List<MovimentoEstoque> movEstoqueLivro = new ArrayList<>();
+
+        for (MovimentoEstoque movimento : movimentos) {
+            if (movimento.getCodigoLivro() == codigoLivro) {
+                movEstoqueLivro.add(movimento);
+            }
+        }
+
+        return movEstoqueLivro;
     }
 
     public int getEstoquePorCodigo(int codigoLivro) {
@@ -33,5 +45,20 @@ public class Estoque {
         }
 
         return total;
+    }
+
+    public Date getDataEntradaEstoquePorCodigo(int codigoLivro) {
+        Date data = null;
+
+        for (MovimentoEstoque movimento : movimentos) {
+            if (movimento.getCodigoLivro() == codigoLivro) {
+                if (movimento.getTipo() == TipoMovimento.ENTRADA) {
+                    data = movimento.getDataMovimento();
+                    return data;
+                }
+            }
+        }
+
+        return data;
     }
 }

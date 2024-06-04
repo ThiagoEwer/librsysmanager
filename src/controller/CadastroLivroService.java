@@ -33,19 +33,19 @@ public class CadastroLivroService {
             int id = repository.gerarIdUnicoParaLivro();
 
             // Cria o novo livro com os dados fornecidos
-            Livro novoLivro = new Livro(id, titulo, autor, ISBN, preco, quantidadeEmEstoque, new java.util.Date());
+            //Livro novoLivro = new Livro(id, titulo, autor, ISBN, preco, quantidadeEmEstoque, new java.util.Date());
 
             // Adicionar o livro ao repositório
-            repository.addLivro(novoLivro);
+            //repository.addLivro(novoLivro);
 
             System.out.println("Livro cadastrado com sucesso!");
 
             // Exibir lista de livros cadastrados
-            System.out.println("Livros cadastrados:");
-            for (Livro livro : repository.getLivros()) {
-                System.out.println("ID: " + livro.getCodigo() + ", Título: " + livro.getTitulo() +
-                        ", Autor: " + livro.getAutor() + ", Data de Entrada: " + livro.getDataEntrada());
-            }
+            // System.out.println("Livros cadastrados:");
+            // for (Livro livro : repository.getLivros()) {
+            //     System.out.println("ID: " + livro.getCodigo() + ", Título: " + livro.getTitulo() +
+            //             ", Autor: " + livro.getAutor() + ", Data de Entrada: " + livro.getDataEntrada());
+            // }
 
             //cadastrar outro livro
             System.out.print("Deseja cadastrar outro livro? (S/N): ");
