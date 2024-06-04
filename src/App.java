@@ -1,24 +1,24 @@
-import controller.CadastroLivroService;
-import controller.CadastroVendaService;
+//import controller.CadastroLivroService;
+//import controller.CadastroVendaService;
 import mock.MockDados;
-import model.*;
-import service.VendaService;
+//import model.*;
+//import service.VendaService;
 
-import java.util.ArrayList;
-import java.util.List;
+//import java.util.ArrayList;
+//import java.util.List;
 import java.util.Scanner;
 
-import GUI.CadastroClientesForm;
+//import GUI.CadastroClientesForm;
 import GUI.MenuPrincipal;
 
 public class App {
     public static void main(String[] args) {
         MockDados repository = new MockDados();
-        Scanner tec = new Scanner(System.in);
+        //Scanner tec = new Scanner(System.in);
 
         // Abre o JFrame do MENU PRINCIPAL
         new MenuPrincipal(repository).setVisible(true);
-        
+
 
         // NOVO FLUXO DE CADASTRO E VENDAS DE LIVROS
         // while (true) {

@@ -102,17 +102,21 @@ public class EstoqueFormAdd extends JDialog {
         }
         else{
 
-            repository.entradaEstoque(codigoLivro, new Date(), Integer.parseInt(txtQuantidade.getText()));
-            JOptionPane.showMessageDialog(null, "Nova entrada cadastrada com sucesso!");
+            if(Integer.parseInt(txtQuantidade.getText()) <= 0){
+                JOptionPane.showMessageDialog(null, "Não é permitido entradas nulas ou negativas!", "Ação inválida!", JOptionPane.ERROR_MESSAGE);
+            }else{
+                repository.entradaEstoque(codigoLivro, new Date(), Integer.parseInt(txtQuantidade.getText()));
+                JOptionPane.showMessageDialog(null, "Nova entrada cadastrada com sucesso!");
 
-            view.removeAll();
-            view.initComponents();
-            
-            form.dispose();;
-            new EstoqueForm(repository, view, codigoLivro).setVisible(true);
+                view.removeAll();
+                view.initComponents();
+                
+                form.dispose();;
+                new EstoqueForm(repository, view, codigoLivro).setVisible(true);
 
-            //FECHAR FORM ATUAL
-            this.dispose();
+                //FECHAR FORM ATUAL
+                this.dispose();
+            }  
         }
     }
 }

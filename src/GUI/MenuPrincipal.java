@@ -12,6 +12,8 @@ public class MenuPrincipal extends JFrame {
     private javax.swing.JMenuItem mnClientesItVerClientes;
     private javax.swing.JMenu mnLivros;
     private javax.swing.JMenuItem mnLivrosItVerLivros;
+    private javax.swing.JMenu mnVendas;
+    private javax.swing.JMenuItem mnVendasItVerVendas;
     private javax.swing.JTabbedPane tblPanel;
 
     private MockDados repository;
@@ -31,6 +33,8 @@ public class MenuPrincipal extends JFrame {
         mnClientesItVerClientes = new javax.swing.JMenuItem();
         mnLivros = new javax.swing.JMenu();
         mnLivrosItVerLivros = new javax.swing.JMenuItem();
+        mnVendas = new javax.swing.JMenu();
+        mnVendasItVerVendas = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,8 +81,19 @@ public class MenuPrincipal extends JFrame {
         });
         mnLivros.add(mnLivrosItVerLivros);
 
+        mnVendas.setText("Vendas");
+
+        mnVendasItVerVendas.setText("Listar Vendas");
+        mnVendasItVerVendas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnVendasItVerVendasActionPerformed(evt);
+            }
+        });
+        mnVendas.add(mnVendasItVerVendas);
+
         barMenu.add(mnClientes);
         barMenu.add(mnLivros);
+        barMenu.add(mnVendas);
 
         setJMenuBar(barMenu);
 
@@ -117,6 +132,12 @@ public class MenuPrincipal extends JFrame {
 
     private void mnLivrosItVerLivrosActionPerformed(java.awt.event.ActionEvent evt) {                                           
         tblPanel.addTab("Livros", new ViewLivrosPanel(repository));
+        String txt = tblPanel.getTitleAt(tblPanel.getSelectedIndex());
+        btnClose.setText("Fechar Guia: " + txt);
+    }
+
+    private void mnVendasItVerVendasActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        tblPanel.addTab("Vendas", new ViewVendasPanel(repository));
         String txt = tblPanel.getTitleAt(tblPanel.getSelectedIndex());
         btnClose.setText("Fechar Guia: " + txt);
     }
