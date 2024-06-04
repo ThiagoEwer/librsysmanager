@@ -18,6 +18,7 @@ public class App {
 
         // Abre o JFrame do MENU PRINCIPAL
         new MenuPrincipal(repository).setVisible(true);
+        
 
         // NOVO FLUXO DE CADASTRO E VENDAS DE LIVROS
         // while (true) {
